@@ -1,33 +1,76 @@
-
 <!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Trendyol Panel (Demo)</title>
+  <title>Trendyol Panel (Girişli)</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    .product { border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 6px; }
-    button { margin-right: 10px; padding: 10px; font-size: 14px; cursor: pointer; }
+    body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; }
+    .hidden { display: none; }
+    .product {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 6px;
+      background: #f9f9f9;
+    }
+    button {
+      margin: 10px 5px 10px 0;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+    }
+    input {
+      padding: 8px;
+      margin-right: 10px;
+      font-size: 14px;
+    }
   </style>
 </head>
 <body>
-  <h1>Trendyol Ürün Paneli (Demo)</h1>
-  <button onclick="alert('Trendyol API'den ürün çekilecek (demo)')">Ürünleri Trendyol'dan Çek</button>
-  <button onclick="alert('Excel'e aktarılacak (demo)')">Excel'e Aktar</button>
 
-  <div class="product">
-    <strong>Epoksi Takı Kalıbı</strong><br/>
-    Fiyat: 149.90 TL<br/>
-    Stok: 12<br/>
-    Kategori: Hobi > Epoksi Kalıplar
+  <div id="login-area">
+    <h2>🔐 Giriş Yap</h2>
+    <input type="password" id="password" placeholder="Şifreyi girin">
+    <button onclick="checkPassword()">Giriş</button>
+    <p id="error" style="color: red;"></p>
   </div>
 
-  <div class="product">
-    <strong>UV Reçine Pigmenti</strong><br/>
-    Fiyat: 89.90 TL<br/>
-    Stok: 34<br/>
-    Kategori: Hobi > Pigmentler
+  <div id="panel-area" class="hidden">
+    <h1>Trendyol Ürün Paneli (Demo)</h1>
+    <button onclick="alert('Trendyol API\'den ürün çekilecek (demo)')">Ürünleri Trendyol'dan Çek</button>
+    <button onclick="alert('Excel\'e aktarılacak (demo)')">Excel'e Aktar</button>
+
+    <div class="product">
+      <strong>Epoksi Takı Kalıbı</strong><br/>
+      Fiyat: 149.90 TL<br/>
+      Stok: 12<br/>
+      Kategori: Hobi > Epoksi Kalıplar
+    </div>
+
+    <div class="product">
+      <strong>UV Reçine Pigmenti</strong><br/>
+      Fiyat: 89.90 TL<br/>
+      Stok: 34<br/>
+      Kategori: Hobi > Pigmentler
+    </div>
   </div>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById('password').value;
+      const correct = "epoksi2025";
+      if (input === correct) {
+        document.getElementById('login-area').style.display = 'none';
+        document.getElementById('panel-area').classList.remove('hidden');
+      } else {
+        document.getElementById('error').innerText = "Şifre yanlış!";
+      }
+    }
+  </script>
 </body>
 </html>
