@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sirius Panel</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+    }
+    .overlay {
+      background: rgba(0, 0, 0, 0.75);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    .login-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 12px;
+      width: 300px;
+    }
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 12px;
+      font-size: 16px;
+      background: #00bcd4;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h1>✨ Sirius Panel</h1>
+    <div class="login-box">
+      <p>Şifre ile giriş yapın</p>
+      <input type="password" id="sifre" placeholder="Şifre">
+      <button onclick="girisYap()">Giriş</button>
+      <p id="uyari" style="color: red; display: none;">Hatalı şifre</p>
+    </div>
+  </div>
+  <script>
+    function girisYap() {
+      const sifre = document.getElementById("sifre").value;
+      if (sifre === "sirius2025") {
+        sessionStorage.setItem("giris", "ok");
+        window.location.href = "panel.html";
+      } else {
+        document.getElementById("uyari").style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
