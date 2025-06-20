@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sirius Ürün Paneli</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f1f5f9;
+    }
+    .product-card {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.1);
+      display: flex;
+      gap: 20px;
+      align-items: center;
+    }
+    .product-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 4px;
+      object-fit: cover;
+      background-color: #ccc;
+    }
+    .product-info {
+      flex: 1;
+    }
+    .product-name {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    .market-icons {
+      display: flex;
+      gap: 10px;
+    }
+    .icon {
+      width: 30px;
+      height: 30px;
+      opacity: 0.4;
+      cursor: pointer;
+    }
+    .icon.active {
+      opacity: 1;
+    }
+    .upload-form {
+      margin-top: 10px;
+      display: none;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+    }
+    .upload-form input, .upload-form select {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Sirius Ürün Paneli (Demo)</h1>
+
+  <div class="product-card">
+    <img src="https://via.placeholder.com/80" alt="Ürün" class="product-img">
+    <div class="product-info">
+      <div class="product-name">Epoksi Harf Kalıbı 4-5 cm</div>
+      <div class="market-icons">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Trendyol_logo.svg" class="icon active" onclick="toggleForm('n11')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/N11_logo.svg" class="icon" onclick="toggleForm('n11')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Hepsiburada_logo.svg" class="icon" onclick="toggleForm('hepsiburada')">
+      </div>
+      <div class="upload-form" id="form-n11">
+        <strong>N11 Ürün Bilgileri:</strong>
+        <input type="text" placeholder="Barkod">
+        <input type="text" placeholder="Fiyat">
+        <input type="text" placeholder="Stok">
+        <input type="text" placeholder="Stok Kodu">
+        <input type="text" placeholder="Kargolama Süresi">
+        <select>
+          <option>Kategori Seç</option>
+          <option>Hobi > Epoksi Kalıplar</option>
+        </select>
+        <button onclick="alert('Ürün Yüklendi (simülasyon)')">Yükle</button>
+      </div>
+
+      <div class="upload-form" id="form-hepsiburada">
+        <strong>Hepsiburada Ürün Bilgileri:</strong>
+        <input type="text" placeholder="Barkod">
+        <input type="text" placeholder="Fiyat">
+        <input type="text" placeholder="Stok">
+        <input type="text" placeholder="Stok Kodu">
+        <input type="text" placeholder="Kargolama Süresi">
+        <select>
+          <option>Kategori Seç</option>
+          <option>Hobi > Kalıplar</option>
+        </select>
+        <button onclick="alert('Ürün Yüklendi (simülasyon)')">Yükle</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleForm(target) {
+      document.querySelectorAll('.upload-form').forEach(form => form.style.display = 'none');
+      const formEl = document.getElementById('form-' + target);
+      if (formEl) formEl.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
